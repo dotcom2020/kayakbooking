@@ -1,5 +1,5 @@
 class KayaksController < ApplicationController
-  before_action :set_kayak, only: [:create, :update, :show, :destroy]
+  before_action :set_kayak, only: [:update, :destroy, :show]
 
   def index
     @kayaks = Kayak.all
@@ -10,7 +10,7 @@ class KayaksController < ApplicationController
   end
 
   def create
-    @kayaks = Kayak.new(kayak_params)
+    @kayak = Kayak.new(kayak_params)
     if @kayak.save
       redirect_to kayak_path(@kayak)
     else
@@ -19,29 +19,30 @@ class KayaksController < ApplicationController
   end
 
   def edit
-
-  end
-
-  def show
-    @kayaks = Kayak.find(params[:id])
-  end
-
-  def delete
-    @kayak.destroy
-    redirect_to kayaks_path
   end
 
   def update
+    @kayak.update(kayak_params)
+    redirect_to kayak_path(@kayak)
+  end
+
+  def show
+
+  end
+
+  def destroy
+    @kayak.destroy
+    redirect_to kayaks_path
   end
 
   private
 
   def set_kayak
-    @kayaks = Kayak.find(params[:id])
+    @kayak = Kayak.find(params[:id])
   end
 
   def kayak_params
-    params.require(:kayak).permit(:id, :description)
+    params.require(:kayak).permit(:id, :description, :price_per_day, :adress, :places, :color, :category, :length, :width, :buoy)
   end
 
 
