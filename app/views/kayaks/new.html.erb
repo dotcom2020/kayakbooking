@@ -1,0 +1,14 @@
+<h1>Formulaire test:</h1>
+
+<%= simple_form_for(@kayak) do |f| %>
+  <%= f.input :price_per_day %>
+  <%= f.input :adress %>
+  <%= f.input :description %>
+  <%= f.input :places %>
+  <%= f.input :color %>
+  <%= f.input :category %>
+  <%= f.input :length %>
+  <%= f.input :width %>
+  <%= f.input :buoy %>
+  <%= f.submit %>
+<% end %>
