@@ -10,26 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_27_102757) do
+ActiveRecord::Schema.define(version: 2022_08_30_165540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "kayak_id"
-    t.integer "user_id"
     t.string "status"
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "kayak_id"
+    t.bigint "user_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.index ["kayak_id"], name: "index_bookings_on_kayak_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "kayaks", force: :cascade do |t|
-    t.string "user_id"
     t.integer "price_per_day"
     t.string "adress"
     t.string "description"
-    t.string "places"
     t.string "color"
     t.string "category"
     t.integer "length"
@@ -37,6 +39,9 @@ ActiveRecord::Schema.define(version: 2022_08_27_102757) do
     t.boolean "buoy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.integer "places"
+    t.index ["user_id"], name: "index_kayaks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +52,10 @@ ActiveRecord::Schema.define(version: 2022_08_27_102757) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

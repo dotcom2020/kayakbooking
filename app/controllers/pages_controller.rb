@@ -1,23 +1,7 @@
 class PagesController < ApplicationController
-
-  def index
-
+  def home
   end
 
-  def new
+  def dashboard
   end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
-
 end
