@@ -3,5 +3,7 @@ class Kayak < ApplicationRecord
 
   CATEGORIES = ["Mer", "Rivière"]
 
-  validates :price_per_day, :address, :description, :category, :places, :length, :width, presence: true
+  validates :price_per_day, :adress, :description, :category, :places, :length, :width, presence: true
+
+  has_one_attached :photo
 end
