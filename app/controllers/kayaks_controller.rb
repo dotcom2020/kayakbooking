@@ -11,7 +11,7 @@ class KayaksController < ApplicationController
 
   def create
     @kayak = Kayak.new(kayak_params)
-    if @kayak.save
+    if @kayak.save!
       redirect_to kayak_path(@kayak)
     else
       render :new
@@ -27,7 +27,6 @@ class KayaksController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy
