@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :kayaks
+  
+  root to: "kayaks#index"
 
-  get 'home', to: 'pages#index'
-  post 'create', to: 'pages#create'
+  resources :kayaks do
+    resources :bookings only: %i(new create edit update destroy)
+  end
 
-  get '/my_bookings', to: 'dashboards#my_bookings'
-  get '/booking_received', to: 'dashboard#bookings_received'
-
+  get "/dashboard", to: "pages#dashboard"
 end
