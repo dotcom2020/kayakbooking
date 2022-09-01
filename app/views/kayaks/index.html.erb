@@ -1,17 +1,27 @@
-<h1> TEST </h1>
-
-<ul>
-  <% @kayaks.each do |kayak| %>
-    <li><%= kayak.id %></li>
-
-    <%= link_to edit_kayak_path(@kayak.id), class: 'pull-right btn btn-default' do %>
-      <i class="fa fa-pencil"></i> Edit this kayak
+<h1>All Kayaks</h1>
+<div>
+  <ul>
+    <% @kayaks.each do |kayak| %>
+      <div>
+        <%= link_to kayak_path(kayak) do %>
+          <li>Proprietaire: <%= kayak.user.first_name %></li>
+          <% if kayak.photo.attached? %>
+            <li>
+              <%= cl_image_tag kayak.photo.key, height: 300, width: 400, crop: :fill %>
+            </li>
+          <% end %>
+          <li>address:<%= kayak.adress %></li>
+          <li>type: <%= kayak.category %></li>
+          <li>Price: <%= kayak.price_per_day %>€</li>
+        <% end %>
+      </div>
+      <%= link_to edit_kayak_path(kayak.id), class: 'pull-right btn btn-default' do %>
+        <i class="fa fa-pencil"></i> Edit this kayak
+      <% end %>
+      <%= link_to kayak_path(kayak.id), method: :delete, data: { confirm: "Delete #{kayak.id}?" } do %>
+        <i class="fa fa-trash-o" aria-hidden="true">Supprimer</i>
+      <% end %>
     <% end %>
-    <%= link_to kayak_path(kayak.id), method: :delete, data: { confirm: "Delete #{kayak.id}?" } do %>
-    <i class="fa fa-trash-o" aria-hidden="true">Supprimer</i>
-
-  <% end %>
-  <% end %>
-</ul>
-
+  </ul>
+</div>
 <% console %>
