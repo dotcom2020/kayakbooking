@@ -12,6 +12,8 @@ class KayaksController < ApplicationController
 
   def create
     @kayak = Kayak.new(kayak_params)
+    user = current_user
+    @kayak.user = user
     if @kayak.save!
       redirect_to kayak_path(@kayak)
     else
@@ -42,7 +44,7 @@ class KayaksController < ApplicationController
   end
 
   def kayak_params
-    params.require(:kayak).permit(:id, :description, :price_per_day, :adress, :places, :color, :category, :length, :width, :buoy)
+    params.require(:kayak).permit(:id, :description, :price_per_day, :adress, :places, :color, :category, :length, :width, :buoy, :photo)
   end
 
 
