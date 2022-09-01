@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :update, :destroy]
 
   def new
+    @kayak = Kayak.find(params[:kayak_id])
     @booking = Booking.new
   end
 
