@@ -39,6 +39,14 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def accept
+
+  end
+
+  def decline
+
+  end
+
   private
 
   def set_booking
