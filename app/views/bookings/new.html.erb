@@ -1,0 +1,11 @@
+<h1>Book your kayak here</h1>
+
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <%= simple_form_for [@kayak, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker", id: "range_start"} %>
+      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker", id: "range_end"} %>
+      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

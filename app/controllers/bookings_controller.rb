@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :update, :destroy]
 
   def new
+    @kayak = Kayak.find(params[:kayak_id])
     @booking = Booking.new
   end
 
@@ -11,6 +12,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = user
     @booking.kayak = kayak
+    @booking.status = "Pending"
+    start_date = params[:booking][:start_date].split(" to ").first.to_date.mjd
+    end_date = params[:booking][:end_date].to_date.mjd
+    total_days = end_date - start_date
+    total_price = total_days * kayak.price_per_day
+    @booking.total_price = total_price
     if @booking.save!
       redirect_to dashboard_path
     else
