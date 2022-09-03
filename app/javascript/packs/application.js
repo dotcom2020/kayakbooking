@@ -12,7 +12,9 @@ import { initFlatpickr } from "../plugins/flatpickr";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-initFlatpickr();
+window.addEventListener("turbolinks:load", function() {
+  initFlatpickr();
+});
 
 import "controllers"
 import "bootstrap"
