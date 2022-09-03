@@ -1,6 +1,6 @@
 class KayaksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_kayak, only: [:update, :destroy, :show]
+  before_action :set_kayak, only: [:edit, :update, :destroy, :show]
 
   def index
     @kayaks = Kayak.all
