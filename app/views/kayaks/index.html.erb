@@ -1,20 +1,24 @@
-<h1>All Kayaks</h1>
-<div>
-  <ul>
-    <% @kayaks.each do |kayak| %>
-      <div>
-        <%= link_to kayak_path(kayak) do %>
-          <li>Proprietaire: <%= kayak.user.first_name %></li>
-          <% if kayak.photo.attached? %>
-            <li>
-              <%= cl_image_tag kayak.photo.key, height: 300, width: 400, crop: :fill %>
-            </li>
-          <% end %>
-          <li>address:<%= kayak.adress %></li>
-          <li>type: <%= kayak.category %></li>
-          <li>Price: <%= kayak.price_per_day %>€</li>
-        <% end %>
-      </div>
-    <% end %>
-  </ul>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19hOLMuv1FQoFuLP37o0KjvXfmDWH2sp6_w&usqp=CAU)">
+  ALL KAYAK
 </div>
+<ul>
+<% @kayaks.each do |kayak| %>
+<div class="cards">
+  <div class="card-category-1">
+  <%= link_to kayak_path(kayak) do %>
+    <% if kayak.photo.attached? %>
+    <%= cl_image_tag kayak.photo.key, height: 200, width: 250, crop: :fill %>
+<% end %>
+
+<div class="description">
+<li><strong>OWNER:</strong> <%= kayak.user.first_name %></li>
+              <li><strong>Address:</strong> <%= kayak.adress %></li>
+              <li><strong>Type:</strong> <%= kayak.category %></li>
+              <li><strong>Price:</strong> <%= kayak.price_per_day %>€</li>
+  </div>
+  </div>
+
+<div>
+<% end %>
+<% end %>
+</ul>
