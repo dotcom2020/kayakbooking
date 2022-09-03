@@ -1,8 +1,18 @@
 <h1>Edit Kayak</h1>
 
-<%= render 'form', Kayak: @kayak %>
+<div class="container">
+  <%= simple_form_for(@kayak) do |f| %>
+    <%= f.input :price_per_day %>
+    <%= f.input :adress %>
+    <%= f.input :description %>
+    <%= f.input :places %>
+    <%= f.input :color %>
+    <%= f.input :category, collection: Kayak::CATEGORIES %>
+    <%= f.input :length %>
+    <%= f.input :width %>
+    <%= f.input :buoy %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
 
-<hr>
-<%= link_to kayaks_path do %>
-  <i class="fa fa-history"></i> Back to list
-<% end %>
+<%= link_to "Back to dashboard", dashboard_path %>
