@@ -1,21 +1,24 @@
 <h1>This is <%= @kayak.user.first_name %>'s kayak </h1>
 
-<div class="card-trip">
-  <img src="<%= cl_image_path @kayak.photo.key %>" />
-  <div class="card-trip-infos">
-    <div class="card-description">
-      <h2><%= @kayak.category %> kayak, from <%= @kayak.user.first_name %></h2>
-      <h2><%= @kayak.adress %></h2>
-      <p><%= @kayak.description %></p>
-      <p>Width : <%= @kayak.width %></p>
-      <p>Length : <%= @kayak.length %></p>
-      <p>Color : <%= @kayak.color %></p>
-      <p>Buoy : <%= @kayak.buoy == true ? "Yes" : "No" %></p>
-      <p>Nb of places :<%= @kayak.places %></p>
-    </div>
-    <div class="card-bottom">
-      <h2 class="card-trip-pricing"><%= @kayak.price_per_day %>€/day</h2>
-      <%= link_to "Book now", new_kayak_booking_path(@kayak), class: "btn btn-flat" %>
+<div class="container">
+  <div class="card-trip">
+    <img src="<%= cl_image_path @kayak.photo.key %>" />
+    <div class="card-trip-infos">
+      <div class="card-description">
+        <h2><%= @kayak.category %> kayak, from <%= @kayak.user.first_name %></h2>
+        <h2><%= @kayak.adress %></h2>
+        <hr>
+        <p><%= @kayak.description %></p>
+        <p>Width : <%= @kayak.width %></p>
+        <p>Length : <%= @kayak.length %></p>
+        <p>Color : <%= @kayak.color %></p>
+        <p>Buoy : <%= @kayak.buoy == true ? "Yes" : "No" %></p>
+        <p>Nb of places :<%= @kayak.places %></p>
+      </div>
+      <div class="card-bottom">
+        <h2 class="card-trip-pricing"><%= @kayak.price_per_day %>€/day</h2>
+        <%= link_to "Book now", new_kayak_booking_path(@kayak), class: "btn btn-flat" %>
+      </div>
     </div>
   </div>
 </div>
