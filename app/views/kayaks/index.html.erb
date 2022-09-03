@@ -15,13 +15,6 @@
           <li>Price: <%= kayak.price_per_day %>€</li>
         <% end %>
       </div>
-      <%= link_to edit_kayak_path(kayak.id), class: 'pull-right btn btn-default' do %>
-        <i class="fa fa-pencil"></i> Edit this kayak
-      <% end %>
-      <%= link_to kayak_path(kayak.id), method: :delete, data: { confirm: "Delete #{kayak.id}?" } do %>
-        <i class="fa fa-trash-o" aria-hidden="true">Supprimer</i>
-      <% end %>
     <% end %>
   </ul>
 </div>
-<% console %>
